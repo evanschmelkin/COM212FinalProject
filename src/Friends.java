@@ -11,9 +11,12 @@ public class Friends {
 
     public String add(String email){
         friends.addFirst(email);
+        return email;
     }
     public String remove(String email){ //if exists in list, remove it
         //create a method in SLL to see if the SLL contains this
+
+        return email;
     }
 
     public void display(){ //iterates through the list and prints out the friends

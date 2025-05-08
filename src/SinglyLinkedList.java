@@ -124,6 +124,44 @@ public class SinglyLinkedList<E> {
 		size--;
 		return ahead.getElement();
 	}
+
+	public E deleteEmail(String email) {
+
+		//if the SLL is empty
+		if (isEmpty()) return null;
+
+		//if the SLL has only 1 node
+		if (size == 1) return removeFirst();
+
+		//the "main part" where we traverse as long as the next thing isn't null\
+		SNode<E> current = head;
+		SNode<E> ahead = head.getNext();
+		SNode<E> prev = null;
+
+		while (ahead.getNext() != null) {
+			//this is the removal part
+			if (current.getElement() == email) {
+                assert prev != null; //suggestion from debug
+                prev.setNext(ahead);
+			}
+			prev = current;
+			current = current.getNext();
+			ahead = ahead.getNext();
+		}
+
+
+        return null;
+    }
+
+	public SNode<E> getNodeByPosition(int pos){ //pos is like index
+		if (pos > size) return null;
+		SNode<E> current = head;
+		for (int i = 0; i <= pos; i++){
+			current = current.getNext();
+		}
+		return current;
+
+	}
 	
 	public static void main(String[] args) {
 		SinglyLinkedList<Integer> newList = new SinglyLinkedList<>();
@@ -132,9 +170,22 @@ public class SinglyLinkedList<E> {
 		newList.addFirst(78);
 		newList.addLast(-65);
 		newList.display();
+
 		
 		SinglyLinkedList<Integer> other = new SinglyLinkedList<>();
 		other.addLast(89);
 		System.out.println(newList.equals(other));
+
+		SinglyLinkedList<String> coolList = new SinglyLinkedList<>();
+		coolList.addFirst("poop");
+		coolList.addFirst("miami");
+		coolList.addFirst("dade");
+		coolList.addFirst("skibidi");
+		coolList.addFirst("chungus");
+
+		coolList.display();
+		coolList.deleteEmail("skibidi");
+		coolList.display();
+
 	}
 }
