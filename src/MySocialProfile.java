@@ -160,8 +160,9 @@ public class MySocialProfile {
                 }
 
 
-                //friends
+                //friends part of the project
                 //first get them individual friends
+                //by splitting them up with commas
                 individualfriends = myReader.nextLine().split(",");
                 int l = 0;
                 for (l = 0; l < individualfriends.length; l++) {
