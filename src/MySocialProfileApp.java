@@ -42,7 +42,9 @@ public class MySocialProfileApp {
             System.out.println("3. View Friends");
             System.out.println("4. Add Friend");
             System.out.println("5. Remove Friend");
-            System.out.println("6. Log Out");
+            System.out.println("6. Add Event");
+            System.out.println("7. View All Events");
+            System.out.println("8. Log Out");
             System.out.print("Choose an option: ");
             String option = input.nextLine();
 

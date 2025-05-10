@@ -69,7 +69,7 @@ public class Event {
 
     public String formatDateTime(){
         return (strMonth +" " + strDay +" " + strYear +" "
-                + strHour +" " + strMinute);
+                + strHour +" " + strMinute + " "+ description);
     }
 
     public long dateTimeComparison(){
@@ -110,10 +110,6 @@ public class Event {
         System.out.println(thisEvent2.isInFuture());
         System.out.println(thisEvent2.wasInPast());
 
-
-
     }
-
-
 
 }

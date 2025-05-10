@@ -102,10 +102,13 @@ public class SinglyLinkedList<E> {
 		if (size() == 0) return false;
 		SNode current = head;
 		while (current.getNext().getElement() != null){
-			//if (current.getNext().getElement() )
+			if (current.getNext().getElement() ==email){
+				return true;
+			}
 		}
 
-	}
+        return false;
+    }
 
 
 	public boolean equals(SinglyLinkedList other) {
@@ -141,84 +144,69 @@ public class SinglyLinkedList<E> {
 		return ahead.getElement();
 	}
 
-	class Friends {
-		SinglyLinkedList<String> friends = new SinglyLinkedList<>();
 
-		public String add(String email) {
-			friends.addFirst(email);
-			return email;
-		}
-		/*
-		public boolean remove(String email) {
-			if (contains(email)) {
-				deleteEmail(email);
-				return true;
-			}
-			return false;
-		}
-		*/
 
-		//this is the evan deletion thing to remove the friends emails
-		public E deleteEmail(String email) {
-			if (isEmpty()) return null;
+	//this is the evan deletion thing to remove the friends emails
+	public E deleteEmail(String email) {
+		if (isEmpty()) return null;
 
-			SNode<E> current = head;
-			SNode<E> prev = null;
+		SNode<E> current = head;
+		SNode<E> prev = null;
 
-			while (current != null) {
-				if (current.getElement().equals(email)) {
-					if (prev == null) {
-						return removeFirst();
-					} else {
-						prev.setNext(current.getNext());
-						if (current == tail) {
-							tail = prev;
-						}
-						size--;
-						return current.getElement();
+		while (current != null) {
+			if (current.getElement().equals(email)) {
+				if (prev == null) {
+					return removeFirst();
+				} else {
+					prev.setNext(current.getNext());
+					if (current == tail) {
+						tail = prev;
 					}
+					size--;
+					return current.getElement();
 				}
-				prev = current;
-				current = current.getNext();
 			}
-
-			return null;
+			prev = current;
+			current = current.getNext();
 		}
 
-		public SNode<E> getNodeByPosition(int pos) { //pos is like index
-			if (pos > size) return null;
-			SNode<E> current = head;
-			for (int i = 0; i <= pos; i++) {
-				current = current.getNext();
-			}
-			return current;
-
-		}
-
-		public static void main(String[] args) {
-			SinglyLinkedList<Integer> newList = new SinglyLinkedList<>();
-			newList.addFirst(89);
-			newList.addLast(50);
-			newList.addFirst(78);
-			newList.addLast(-65);
-			newList.display();
-
-
-			SinglyLinkedList<Integer> other = new SinglyLinkedList<>();
-			other.addLast(89);
-			System.out.println(newList.equals(other));
-
-			SinglyLinkedList<String> coolList = new SinglyLinkedList<>();
-			coolList.addFirst("poop");
-			coolList.addFirst("miami");
-			coolList.addFirst("dade");
-			coolList.addFirst("skibidi");
-			coolList.addFirst("chungus");
-
-			coolList.display();
-			coolList.deleteEmail("skibidi");
-			coolList.display();
-
-		}
+		return null;
 	}
+
+	public SNode<E> getNodeByPosition(int pos) { //pos is like index
+		if (pos > size) return null;
+		SNode<E> current = head;
+		for (int i = 0; i <= pos; i++) {
+			current = current.getNext();
+		}
+		return current;
+
+	}
+
+	public static void main(String[] args) {
+		SinglyLinkedList<Integer> newList = new SinglyLinkedList<>();
+		newList.addFirst(89);
+		newList.addLast(50);
+		newList.addFirst(78);
+		newList.addLast(-65);
+		newList.display();
+
+
+		SinglyLinkedList<Integer> other = new SinglyLinkedList<>();
+		other.addLast(89);
+		System.out.println(newList.equals(other));
+
+		SinglyLinkedList<String> coolList = new SinglyLinkedList<>();
+		coolList.addFirst("poop");
+		coolList.addFirst("miami");
+		coolList.addFirst("dade");
+		coolList.addFirst("skibidi");
+		coolList.addFirst("chungus");
+
+		coolList.display();
+		coolList.deleteEmail("skibidi");
+		coolList.display();
+
+	}
+
 }

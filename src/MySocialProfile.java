@@ -63,7 +63,8 @@ public class MySocialProfile {
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
 
-            if (data == email && myReader.nextLine() == password){
+
+            if (data.equals(email) && myReader.nextLine().equals(password)){
                 myReader.close();
                 return true;
             }
@@ -105,7 +106,21 @@ public class MySocialProfile {
 
     }
 
-    public void close(){ //isn't static because we update information of a speicifc user
+    public static void signUp(String email, String password){
+
+
+
+
+        try {
+            FileWriter myWriter = new FileWriter("MySocialProfile.txt");
+            myWriter.write(email + "\n");
+            myWriter.write(password);
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
     }
 
