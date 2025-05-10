@@ -43,9 +43,9 @@ public class MySocialProfileApp {
 
             //next event
             user.getFirstEvent();
-            //3 most recent timline entries
+            //3 most recent timeline entries
             user.timeline.display(3);
-            //list of all events they plan to attent
+            //list of all events they plan to attend
             user.upcomingEvents.printSortedEvents();
 
             System.out.println("\nOptions:");
