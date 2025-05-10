@@ -76,7 +76,8 @@ public class Event {
     }
 
     public String getDescription(){
-        return description;
+
+        return description + " " + formatDateTime();
     }
 
     public long dateTimeComparison(){
