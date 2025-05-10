@@ -42,7 +42,7 @@ public class MySocialProfileApp {
             System.out.println("Class Year: " + user.classYear);
 
             //next event
-            user.getFirstEvent();
+            System.out.println(user.getFirstEvent());
             //3 most recent timeline entries
             user.timeline.display(3);
             //list of all events they plan to attend
