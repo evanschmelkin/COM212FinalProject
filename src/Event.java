@@ -18,6 +18,9 @@ public class Event {
     long dateComparison;
     String formatedDateTime;
 
+
+
+
     public Event(int dayp, int monthp, int yearp, int hourp, int minutep, String descriptionp){
         day = dayp % 31;
         if (day< 10){
@@ -72,6 +75,10 @@ public class Event {
                 + strHour +" " + strMinute + " "+ description);
     }
 
+    public String getDescription(){
+        return description;
+    }
+
     public long dateTimeComparison(){
         return Long.parseLong(strYear+strMonth+strDay+strHour+strMinute);
 
@@ -95,6 +102,8 @@ public class Event {
         LocalDateTime eventTime = LocalDateTime.of(year, month, day, hour, minute);
         return eventTime.isBefore(now);
     }
+
+
 
 
 

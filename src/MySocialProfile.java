@@ -15,11 +15,17 @@ public class MySocialProfile {
     public String email;
     public String password;
     public int classYear;
-    //public SinglyLinkedQueue<Event> upcomingEvents;
-    public Timeline timeline;
+    public ArrayPriorityQueue upcomingEvents = new ArrayPriorityQueue(100);
+    public Timeline timeline = new Timeline();
 
-    public Friends[] friendsList;
-    //public SinglyLinkedL //i dont know wo was working here but it wast finished so i commented it out
+    //lists used for indexing
+    public String[] tokens;
+    public String[] individualposts;
+    public String[] individualfriends;
+
+    public Friends myFriends = new Friends();
+
+
 
 
     public static Scanner readFile() {
@@ -35,15 +41,20 @@ public class MySocialProfile {
         return null;
     }
 
+    public String getFirstEvent(){
+        return upcomingEvents.getMin().getDescription();
+    }
 
     public static MySocialProfile login(){ //some of user input code form w3 schools
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 
         System.out.println("Enter email");
         String email = myObj.nextLine();  // Read user input
-
+        //myObj.nextLine();
         System.out.println("Enter password");
+
         String password = myObj.nextLine();
+        //System.out.println("test1");
 
         if (authenticate(email, password)){
             //extract(email);
@@ -64,9 +75,13 @@ public class MySocialProfile {
             String data = myReader.nextLine();
 
 
-            if (data.equals(email) && myReader.nextLine().equals(password)){
-                myReader.close();
-                return true;
+            if (data.equals(email) ){ //&&
+                myReader.nextLine();
+
+                if (myReader.nextLine().equals(password)) {
+                    myReader.close();
+                    return true;
+                }
             }
         }
         myReader.close();
@@ -90,36 +105,116 @@ public class MySocialProfile {
             //this next line in theory will only run once
             //at the specific line whence it finds the email
             if (data.equals(email)) {
+                //do everything within this if statement!
                 System.out.println("data equals data! " + data);
 
-                System.out.println("nextline is " + myReader.nextLine());
-
                 //save some of them variables
-                data = email;
+                //saving email through classyear
+                email = data;
                 fullName = myReader.nextLine();
+                System.out.println("fullname is " + fullName);
+                password = myReader.nextLine();
+                classYear = Integer.parseInt(myReader.nextLine());
+
+
+                tokens = myReader.nextLine().split(",");
+
+                int j = 0;
+                String[] parts = null;
+                for (j = 0; j < tokens.length; j++) {
+                    parts = tokens[j].split(" ");
+                    int charlength = tokens[j].length();
+                    System.out.println(charlength);
+
+
+                    //day is done this way to clean the quotation mark at the beginning
+                    int day = Integer.valueOf(parts[0].substring(1, 2));
+                    //beautiful, simple interior code
+                    int month = Integer.parseInt(parts[1]);
+                    int year = Integer.parseInt(parts[2]);
+                    int hour = Integer.parseInt(parts[3]);
+                    int minute = Integer.parseInt(parts[4]);
+
+                    //this is probably the worst way i could've written it, but it probably works
+                    //it is charlength -1 in order to clean up the quotation mark at the end
+                    String description = tokens[j].substring(18, charlength -1);
+
+
+                    System.out.println("skibidi " + description);
+
+                    //make the event
+                    Event thisEvent = new Event(day, month, year, hour, minute, description);
+                    upcomingEvents.insert(thisEvent);
+                }
+
+                //timeline posts
+                //first get them individual timeline posts
+                individualposts = myReader.nextLine().split(",");
+
+                //now use a for loop to add them posts to
+                int k = 0;
+                String[] words = null;
+                for (k = 0; k < individualposts.length; k++) {
+                    System.out.println(individualposts[k]);
+                    timeline.add(individualposts[k]);
+                }
+
+
+                //friends
+                //first get them individual friends
+                individualfriends = myReader.nextLine().split(",");
+                int l = 0;
+                for (l = 0; l < individualfriends.length; l++) {
+                    System.out.println(individualfriends[l]);
+                    myFriends.add(individualfriends[l]);
+                }
 
 
             }
         }
-        myReader.close();
 
+        myReader.close();
 
     }
 
-    public static void signUp(String email, String password){
+    public static boolean findUser(String email){
+        Scanner myReader = readFile();
+        while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            if (data.equals(email)){
+                myReader.close();
+                return true;
+            }
+        }
+        myReader.close();
+        return false;
+    }
+    public static void signUp(){
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+
+        System.out.println("Enter email");
+        String email = myObj.nextLine();  // Read user input
 
 
 
+        if (findUser(email)){ System.out.println("This email is already taken...");}
 
-        try {
-            FileWriter myWriter = new FileWriter("MySocialProfile.txt");
-            myWriter.write(email + "\n");
-            myWriter.write(password);
-            myWriter.close();
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+
+        else{
+
+            System.out.println("Enter password");
+            String password = myObj.nextLine();
+
+            try {
+                FileWriter myWriter = new FileWriter("MySocialProfile.txt");
+                myWriter.write(email + "\n");
+                myWriter.write(password);
+                myWriter.close();
+                System.out.println("Successfully wrote to the file.");
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
         }
 
     }
@@ -129,6 +224,9 @@ public class MySocialProfile {
         System.out.println("Hello! Welcome to a basic social profile");
         MySocialProfile social = new MySocialProfile();
         social.extract("gnorbert@conncoll.edu");
+
+        //social.timeline.display(3);
+        social.myFriends.display(4);
 
 
     }

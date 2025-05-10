@@ -22,5 +22,22 @@ public class Friends {
         return false;
     }
 
+    public void display(int num_friends){
+
+
+
+        if (num_friends<=friends.size){
+            int i = 0;
+            while (i < num_friends && i < friends.size){
+                System.out.println((i+1) + ". " + friends.getNodeByPosition(i).getElement());
+                i++;
+            }
+        }
+        else{
+            System.out.println("Out of bounds");
+        }
+
+    }
+
 
 }

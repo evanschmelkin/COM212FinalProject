@@ -176,7 +176,7 @@ public class SinglyLinkedList<E> {
 	public SNode<E> getNodeByPosition(int pos) { //pos is like index
 		if (pos > size) return null;
 		SNode<E> current = head;
-		for (int i = 0; i <= pos; i++) {
+		for (int i = 0; i < pos; i++) {
 			current = current.getNext();
 		}
 		return current;

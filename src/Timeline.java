@@ -1,6 +1,10 @@
 public class Timeline {
     public SinglyLinkedList<String> posts = new SinglyLinkedList<String>();
 
+    /**
+     *
+     * @param content is a String
+     */
     public void add(String content){ //don't need date. most recent post at head of list
         posts.addFirst(content); //validation so have to enter text
     }
@@ -12,10 +16,17 @@ public class Timeline {
     }
 
     public void display(int num_posts){
-        int i = 0;
-        while (i < num_posts && i < posts.size){
-            System.out.println("Post " + (i+1) + ": " + posts.getNodeByPosition(i).getElement());
+        if (num_posts<=posts.size){
+            int i = 0;
+            while (i < num_posts && i < posts.size){
+                System.out.println((i+1) + ". " + posts.getNodeByPosition(i).getElement());
+                i++;
+            }
         }
+        else{
+            System.out.println("Out of bounds");
+        }
+
 
     }
 

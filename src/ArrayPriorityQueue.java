@@ -10,6 +10,7 @@ public class ArrayPriorityQueue {
 		n = 0;
 	}
 
+
 	public int size() {
 		return n;
 	}
