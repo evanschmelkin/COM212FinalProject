@@ -25,6 +25,7 @@ public class Event {
         }else{
             strDay = Integer.toString(day);
         }
+
         month = monthp % 12;
         if (month< 10){
             strMonth = "0"+ Integer.toString(month);
@@ -52,9 +53,10 @@ public class Event {
         }else{
             strHour = Integer.toString(hour);
         }
+
         minute = minutep % 60;
         if (minute< 10){
-            strMonth = "0"+ Integer.toString(minute);
+            strMinute = "0"+ Integer.toString(minute);
         }else{
             strMinute = Integer.toString(minute);
         }

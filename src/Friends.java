@@ -13,13 +13,14 @@ public class Friends {
         friends.addFirst(email);
         return email;
     }
-    public String remove(String email){ //if exists in list, remove it
-        //create a method in SLL to see if the SLL contains this
 
-        return email;
+    public boolean remove(String email) {
+        if (friends.contains(email)) {
+            friends.deleteEmail(email);
+            return true;
+        }
+        return false;
     }
 
-    public void display(){ //iterates through the list and prints out the friends
 
-    }
 }

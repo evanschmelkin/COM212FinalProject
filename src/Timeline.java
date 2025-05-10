@@ -5,8 +5,10 @@ public class Timeline {
         posts.addFirst(content); //validation so have to enter text
     }
 
-    public void remove(int post_id){ //posts are labeled most recently as starting at 1
+    public String remove(int post_id){ //posts are labeled most recently as starting at 1
+        String temp = posts.getNodeByPosition(post_id-1).getElement();
         posts.deleteEmail(posts.getNodeByPosition(post_id-1).getElement());
+        return temp;
     }
 
     public void display(int num_posts){

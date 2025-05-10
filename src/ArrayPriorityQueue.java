@@ -1,5 +1,6 @@
 import java.io.*;
 
+
 public class ArrayPriorityQueue {
 	Event[] A;
 	int n;
@@ -90,26 +91,71 @@ public class ArrayPriorityQueue {
 		else
 			return false;
 	}
+
+
 	public void printSortedEvents() {
-		while (!isEmpty()) {
-			Event e = extractMin();
-			System.out.println(e.description + ": " + e.formatedDateTime);
+		Event[] copy = new Event[n + 1];
+		for (int i = 1; i <= n; i++) {
+			copy[i] = A[i];
+		}
+		int copySize = n;
+
+		while (copySize > 0) {
+			Event min = copy[1];
+			System.out.println(min.description + ": " + min.formatedDateTime);
+			copy[1] = copy[copySize];
+			copySize--;
+
+			int p = 1;
+			while (true) {
+				int l = 2 * p;
+				int r = 2 * p + 1;
+				int smallest = p;
+
+
+				if (l <= copySize && copy[l].dateComparison < copy[smallest].dateComparison) {
+					smallest = l;
+				}
+
+				if (r <= copySize && copy[r].dateComparison < copy[smallest].dateComparison) {
+					smallest = r;
+				}
+
+
+
+				if (smallest != p) {
+					Event temp = copy[p];
+					copy[p] = copy[smallest];
+					copy[smallest] = temp;
+					p = smallest;
+				} else {
+					break;
+				}
+			}
 		}
 	}
 
 
+
 	public static void main(String[] args){
 		ArrayPriorityQueue myQueue = new ArrayPriorityQueue(10);
+
 		Event thisEvent = new Event(7,5,2025, 23, 30, "Time for JA");
 		Event thisEvent2 = new Event(7,5,2025, 13, 15, "Time for Cal C");
 		Event thisEvent3 = new Event(7,5,2025, 19, 30, "Com 212 meeting");
+		Event thisEvent4 = new Event(10,5,2025, 14, 00, "Com 212 meeting again");
+		Event thisEvent5 = new Event(5,5,2025, 1, 30, "Sleep");
 
 
 		myQueue.insert(thisEvent3);
 		myQueue.insert(thisEvent);
+		myQueue.insert(thisEvent5);
+		myQueue.insert(thisEvent4);
 		myQueue.insert(thisEvent2);
+		myQueue.printSortedEvents();
 
 		myQueue.printSortedEvents();
+
 
 	}
 
