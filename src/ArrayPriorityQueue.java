@@ -1,4 +1,5 @@
 /*
+Evan, Max, and Abdullah
 this class is what we use to store events and make sure that we are able to acess the next event in constant time
 
 */

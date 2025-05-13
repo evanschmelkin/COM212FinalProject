@@ -1,4 +1,5 @@
 //we don't use this class. this was from the node implementation of the tree
+//Evan, Max, and Abdullah
 
 
 

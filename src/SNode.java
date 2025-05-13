@@ -1,6 +1,7 @@
 /**
 * A generic node class for a SinglyLinkedList class
 * This stores an arbitrary element object type
+ * Evan, Max, and Abdullah
 */
 
 public class SNode<E> {

@@ -2,6 +2,7 @@
   * Implementation of a generic stack ADT using a SinglyLinkedList.
   * Stack: a collection of objects that are inserted
   * and removed according to the last-in first-out principle.
+  * Evan, Max, and Abdullah
   */
 
 

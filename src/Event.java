@@ -2,6 +2,7 @@ import java.time.LocalDateTime;
 
 
 /*
+Evan, Max, and Abdullah
 this class is in control of the formatting of each event and compares their dates 
 so we can print them out in order
 

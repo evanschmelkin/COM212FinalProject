@@ -1,6 +1,7 @@
 /**
   * Implementation of a generic queue ADT using a SinglyLinkedList.
   * Realization of a FIFO queue as an adaptation of a SinglyLinkedList
+ * Evan, Max, and Abdullah
 */
 
 

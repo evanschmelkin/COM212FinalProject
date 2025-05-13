@@ -1,6 +1,7 @@
 /**
 * A Singly Linked Class
 * Storing a list of SNode nodes with integer elements
+ * Evan, Max, and Abdullah
 */
 
 public class SinglyLinkedList<E> {

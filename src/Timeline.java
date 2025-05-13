@@ -1,7 +1,7 @@
 /**
  * a timeline class storing all the posts that the user creates
  * we have the functionality to display all the posts in the list
- * 
+ * Evan, Max, and Abdullah
  * 
  */
 
