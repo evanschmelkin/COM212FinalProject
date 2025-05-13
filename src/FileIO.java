@@ -1,6 +1,11 @@
 import java.io.*;
 import java.util.Scanner;
 
+
+
+//we didn't use this class. perhaps accidently added by an import???
+
+
 class FileIO{
 	public static void main(String args[]){
 		//this try-catch statement is needed around this file input code

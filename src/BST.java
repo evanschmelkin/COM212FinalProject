@@ -1,5 +1,7 @@
 import java.util.*;               // for Stack class
 
+
+//we don't use this class. 
 class BST {
 	private TNode root;
 	

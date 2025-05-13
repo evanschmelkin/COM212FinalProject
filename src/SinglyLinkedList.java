@@ -17,28 +17,49 @@ public class SinglyLinkedList<E> {
 
 	//ACCESS METHODS
 	//Returns the number of nodes in the list
+	/**
+	 * 
+	 * @return int the number of nodes we have
+	 */
 	public int size() {
 		return size;
 	}
 
 	//Returns true of the list is empty, false otherwise
+	/**
+	 * 
+	 * @return boolean whether we have any nodes or not
+	 */
 	public boolean isEmpty() {
 		return size == 0;
 	}
 
 	//Returns the first element in the list, null if empty
+
+	/**
+	 * 
+	 * @return E the first node's element, whatever type it may be
+	 */
 	public E first() {
 		if (isEmpty()) return null;
 		return head.getElement();
 	}
 
 	//Returns the last element in the list, null if empty
+	/**
+	 * 
+	 * @return E the last node's elemn whatever type it may be
+	 */
 	public E last() {
 		if (isEmpty()) return null;
 		return tail.getElement();
 	}
 
 	//Adds a new element to the front of the list
+	/**
+	 * 
+	 * @param e the element of the new first node
+	 */
 	public void addFirst(E e) {
 		SNode<E> newNode = new SNode<>(e, head);
 		head = newNode;
@@ -49,6 +70,10 @@ public class SinglyLinkedList<E> {
 	}
 
 	//Add a new element to the end of the list
+	/**
+	 * 
+	 * @param e the elemt of the new last node
+	 */
 	public void addLast(E e) {
 		SNode<E> newNode = new SNode<>(e, null);
 		if (isEmpty()) {
@@ -63,6 +88,10 @@ public class SinglyLinkedList<E> {
 
 	//Removes and returns the first element of the list
 	//Returns null if list is empty
+	/**
+	 * @return E the old first node's eleemnt that we removed 
+	 * 
+	 */
 	public E removeFirst() {
 		if (isEmpty()) {
 			return null;
@@ -78,6 +107,10 @@ public class SinglyLinkedList<E> {
 	}
 
 	//Prints the elements of the list
+	/**
+	 * 
+	 * prints out the entire list
+	 */
 	public void display() {
 		SNode current = head;
 		while (current != null) {                // for each SNode,
@@ -88,6 +121,10 @@ public class SinglyLinkedList<E> {
 	}
 
 	//Returns a string representation of the list
+	/**
+	 * 
+	 * @return string string represntation of the node
+	 */
 	public String toString() {
 		SNode current = head;
 		String list = "";
@@ -98,19 +135,31 @@ public class SinglyLinkedList<E> {
 		return list;
 	}
 
+
+		/**
+		 * @param email the element we are looking for in a node in the list
+		 * @return boolean whether the list contains a node with a specific elemnt
+		 */
 	public boolean contains (String email){
+		System.out.println("contains command recognized");
+		display();
 		if (size() == 0) return false;
 		SNode current = head;
-		while (current.getNext().getElement() != null){
-			if (current.getNext().getElement() ==email){
+		while (current!= null){
+			
+			if (current.getElement() ==email){
 				return true;
 			}
+			current = current.getNext();
 		}
-
+		
         return false;
     }
 
-
+    	/**
+    	 * @return boolean whether two singularly linked lists are equal to each other
+    	 * @param other the other SLL
+    	 */
 	public boolean equals(SinglyLinkedList other) {
 		if (other == null) return false;            // Other SSL is not null
 		if (size != other.size()) return false;        //Other SSL's size is the same
@@ -128,6 +177,9 @@ public class SinglyLinkedList<E> {
 	}
 
 	//Removes and returns the last element in the list
+	/**
+	 * @return E the element of the former last node whateve type it may be
+	 */
 	public E removeLast() {
 		if (isEmpty()) return null;
 		if (size == 1) return removeFirst();
@@ -147,6 +199,11 @@ public class SinglyLinkedList<E> {
 
 
 	//this is the evan deletion thing to remove the friends emails
+	/**
+	 * @return E the email of the element we wanted to delete
+	 * @param email the email is the identifier of the node we're going to delete
+	 * 
+	 */
 	public E deleteEmail(String email) {
 		if (isEmpty()) return null;
 
@@ -173,6 +230,12 @@ public class SinglyLinkedList<E> {
 		return null;
 	}
 
+
+		/**
+		 * 
+		 * @param pos starts at 1 kind of like index in an array. describes the position of a node in an SLL
+		 * @return SnodeE the node at that position whateve rthe element type might be
+		 */
 	public SNode<E> getNodeByPosition(int pos) { //pos is like index
 		if (pos > size) return null;
 		SNode<E> current = head;
@@ -206,6 +269,8 @@ public class SinglyLinkedList<E> {
 		coolList.display();
 		coolList.deleteEmail("skibidi");
 		coolList.display();
+		//System.out.println("test123423452");
+		System.out.println(coolList.contains("chungus"));
 
 	}
 

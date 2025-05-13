@@ -3,6 +3,11 @@
   * Realization of a FIFO queue as an adaptation of a SinglyLinkedList
 */
 
+
+
+
+//we don't use this class
+
 public class SinglyLinkedQueue<E> {
 	
 	private SinglyLinkedList<E> list;		//The SinglyLinkedList for storage

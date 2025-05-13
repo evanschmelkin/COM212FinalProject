@@ -4,6 +4,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+
+//we don't use this class. probably got here because of a weird import command
 public class TestFileIO {
 	public static void read() {
 		try {

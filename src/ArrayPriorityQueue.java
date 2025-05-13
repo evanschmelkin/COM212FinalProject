@@ -1,28 +1,47 @@
-import java.io.*;
+/*
+this class is what we use to store events and make sure that we are able to acess the next event in constant time
 
+*/
 
 public class ArrayPriorityQueue {
 	Event[] A;
 	int n;
-
+	/**
+	 * @param capacity how many events we can create
+	 */
 	public ArrayPriorityQueue(int capacity) {
 		A = new Event[capacity];
 		n = 0;
 	}
 
-
+	/**
+	 * @return int the current amount of events
+	 */
 	public int size() {
 		return n;
 	}
 
+	/**
+	 * @return boolean whether there are any events present
+	 */
 	public boolean isEmpty() {
 		return n == 0;
 	}
 
+
+	/**
+	 * 
+	 * @return Event returns the event that is closest
+	 */
 	public Event getMin() {
 		return A[1];
 	}
 
+
+	/**
+	 * @param k the event that we want to add
+	 * adds an event to our list
+	 */
 	public void insert(Event k) {
 		A[n+1] = k;
 		n++;
@@ -36,6 +55,10 @@ public class ArrayPriorityQueue {
 		}
 	}
 
+	/**
+	 * @return Event the nearest event that we just removed
+	 * 
+	 */
 	public Event extractMin() {
 		swap(1,n);
 		n--;
@@ -64,24 +87,52 @@ public class ArrayPriorityQueue {
 		return A[n+1];
 	}
 
+	/**
+	 * @param cIndex the index of the child we need to parent of
+	 * @return int getting the index of the parent by integer division
+	 * 
+	 */
 	private int parentIndex(int cIndex) {
 		return cIndex/2;
 	}
 
+	/**
+	 * 
+	 * @param pIndex the index of the parent we need left child of
+	 * @return int the index of the left child
+	 */
 	private int leftChildIndex(int pIndex) {
 		return pIndex * 2;
 	}
 
+
+	/**
+	 * @param pIndex the index of the parent we need right child of
+	 * @return int index of the right child
+	 * 
+	 */
 	private int rightChildIndex(int pIndex) {
 		return (pIndex * 2) + 1;
 	}
 
+	/**
+	 * @param pIndex the parent index
+	 * @param cIndex the child index
+	 * swaping a parent and a child nodes
+	 */
 	private void swap(int pIndex, int cIndex) {
 		Event temp = A[cIndex];
 		A[cIndex] = A[pIndex];
 		A[pIndex] = temp;
 	}
 
+
+	/**
+	 * 
+	 * @param pIndex the parent we need to figure out if has smaller child
+	 * @return boolean whether the parent has a smaller child or not
+	 * 
+	 */
 	private boolean hasSmallerChild(int pIndex) {
 		int rCIndex = rightChildIndex(pIndex);
 		int lCIndex = leftChildIndex(pIndex);
@@ -94,6 +145,10 @@ public class ArrayPriorityQueue {
 	}
 
 
+	/**
+	 * prints out the events sorted from nearest to last
+	 * 
+	 */
 	public void printSortedEvents() {
 		Event[] copy = new Event[n + 1];
 		for (int i = 1; i <= n; i++) {
@@ -103,7 +158,7 @@ public class ArrayPriorityQueue {
 
 		while (copySize > 0) {
 			Event min = copy[1];
-			System.out.println(min.description + ": " + min.formatedDateTime);
+			System.out.println(min.formatedDateTime); //min.description + ": " + 
 			copy[1] = copy[copySize];
 			copySize--;
 

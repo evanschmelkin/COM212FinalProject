@@ -1,3 +1,13 @@
+/*
+Evan, Max, and Abdullah
+5/12/2025
+Data Structures
+Final Project
+Professor Tarimo
+ */
+
+
+
 import java.util.Scanner;
 
 public class MySocialProfileApp {
@@ -35,7 +45,14 @@ public class MySocialProfileApp {
         input.close();
     }
 
+
+        /**
+         * @param input the scanner object we use to see what the user wrote
+         * @param user the user objects account
+         * 
+         */
     private static void userDashboard(Scanner input, MySocialProfile user) {
+        //System.out.println("test: " + user.email);
         while (true) {
             System.out.println("\n=== Home Screen ===");
             System.out.println("Name: " + user.fullName);
@@ -60,7 +77,7 @@ public class MySocialProfileApp {
             System.out.print("Choose an option: ");
             String option = input.nextLine();
 
-            switch (option) {
+            switch (option) { 
                 case "1": //post to timeline
                     System.out.print("Write your post: ");
                     String post = input.nextLine();
@@ -92,6 +109,7 @@ public class MySocialProfileApp {
                     System.out.print("Enter email to remove: ");
                     String oldFriend = input.nextLine();
                     boolean removed = user.myFriends.remove(oldFriend);
+                    System.out.println("test");
                     if (removed) {
                         System.out.println("Friend removed.");
                     } else {
@@ -100,16 +118,38 @@ public class MySocialProfileApp {
                     break;
 
                 case "6": //add event
-                    System.out.println("");
-                    return; //will set current user to null in for loop above
+                    System.out.print("Enter event description:");
+                    String description = input.nextLine();
+
+                    System.out.print("Enter event day:");
+                    int day = Integer.parseInt(input.nextLine());
+
+                    System.out.print("Enter event month:");
+                    int month = Integer.parseInt(input.nextLine());
+
+                    System.out.print("Enter event year:");
+                    int year = Integer.parseInt(input.nextLine());
+
+                    System.out.print("Enter event hour:");
+                    int hour= Integer.parseInt(input.nextLine());
+
+                    System.out.print("Enter event minute:");
+                    int minute = Integer.parseInt(input.nextLine());
+
+                    Event newEvent = new Event(day,month,year,hour,minute,description); //day month year hour minute description
+                    user.upcomingEvents.insert(newEvent);
+                    break; //will set current user to null in for loop above
 
                 case "7":
 
                     System.out.println("Your events:");
                     user.upcomingEvents.printSortedEvents();
+                    break;
 
                 case "8": //add event
-                    System.out.println("Logging out...");
+
+                    System.out.println("Logging out..." + user.email);
+                    user.close();
                     return; //will set current user to null in for loop above
 
                 default:

@@ -4,6 +4,10 @@
   * and removed according to the last-in first-out principle.
   */
 
+
+
+//we don't use this class
+
 public class SinglyLinkedStack<E> {  
   SinglyLinkedList<E> list;
   

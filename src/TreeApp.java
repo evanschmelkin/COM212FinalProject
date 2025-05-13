@@ -1,5 +1,10 @@
 //This code was adapted from Lafore Data Structures Text
 
+
+//we don't use this class. this was from the example program in class
+
+
+
 import java.io.*;
 
 class TreeApp
